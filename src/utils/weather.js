@@ -11,13 +11,14 @@ const weather = (address, callback) => {
             callback('Unable to find location', undefined);
 
         } else {
-            const { temperature, precip, feelslike } = response.body.current;
+            const { temperature, precip, feelslike, humidity } = response.body.current;
             callback(undefined, {
                 description: response.body.current.weather_descriptions[0],
                 temperature: temperature,
                 precipitation: precip,
                 feels_like: feelslike,
-                place: address.location
+                place: address.location,
+                humidity: humidity
             });
         }
 

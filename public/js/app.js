@@ -17,7 +17,7 @@ weatherForm.addEventListener('submit', (e) => {
                 messageOne.textContent = '';
                 messageTwo = data.error;
             }
-            const messageToPrint = data.description + ' with a ' + data.precipitation + '% chance of showers. The temperature is currently ' + data.temperature + ' degrees. In the location ' + data.place;
+            const messageToPrint = data.description + ' with a ' + data.precipitation + '% chance of showers. The temperature is currently ' + data.temperature + ' degrees. In the location ' + data.place + ' with humidity of ' + data.humidity;
 
             messageOne.textContent = '';
             messageTwo.textContent = messageToPrint
