@@ -1,7 +1,7 @@
 const request = require('postman-request');
 
 const geocode = (address, callback) => {
-    const url = 'https://api.mapbox.com/search/geocode/v6/forward?q=' + encodeURIComponent(address) + '&access_token=pk.eyJ1Ijoic21hcnRpbm81NTUiLCJhIjoiY20wOGR0b2VjMWc1cTJqcG15Y2l0cWRiZiJ9.rHCjMrnvsPFpbabNSU-rsA&limit=1';
+    const url = 'https://api.positionstack.com/v1/forward?access_key=ea2121ec16ec64c3347e7ce112d910ec&query=' + encodeURIComponent;
 
     request({ url: url, json: true }, (error, response) => {
         if (error) {
@@ -9,11 +9,11 @@ const geocode = (address, callback) => {
         } else if (response.body.features.length === 0) {
             callback('Unable to find location. Try another search', undefined);
         } else {
-            const { properties } = response.body.features[0];
+            const { properties } = response.body.data[0];
             callback(undefined, {
-                location: properties.full_address,
-                latitude: properties.coordinates.latitude,
-                longitude: properties.coordinates.longitude
+                location: properties.label,
+                latitude: properties.latitude,
+                longitude: properties.longitude
             });
 
         }
